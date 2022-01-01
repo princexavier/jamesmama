@@ -1,0 +1,30 @@
+.center{
+    margin: auto;
+    width: 75%;
+    border: 3
+px
+ solid green;
+    padding: 10
+px
+;
+}
+
+#doc{
+    padding: 23 px 0px
+;
+}
+.dropdownCustom{
+    width: 145
+px
+;
+    padding: 6
+px
+;
+    border: 1
+px
+ solid #070727;
+    border-radius: 1px solid red;
+    border-radius: 3
+px
+;
+}

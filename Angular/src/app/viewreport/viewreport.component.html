@@ -1,0 +1,76 @@
+<div class="container">
+    <button class="btn btn-success">View By Date</button>
+</div>
+
+<div class="container" style="width:14%;float: right;margin-right: 6%;">
+    <div class="form-group">
+        <input (change)="viewbyDate()" [(ngModel)]="model.dateCreated" type="date" class="form-control"
+            id="createdDate">
+    </div>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Amount</th>
+
+                <th scope="col">Date Created</th>
+
+                <th scope="col">Customer Group</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let billentry of billingEntries ;let i=index">
+                <tr>
+                    <td scope="row">{{i+1}}</td>
+                    <td>
+                        <div class="form-row">
+                            <div class="form-group ">
+
+                                <label>{{billentry.customerName}}</label>
+
+                            </div>
+
+                        </div>
+                    </td>
+                    <td>
+
+                        <div class="form-group ">
+                            <label>Rs.{{billentry.amount}}</label>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label> {{billentry.createdDate | date: 'dd/MM/yyyy'}}</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label>{{billentry.customerGroup}}</label>
+
+                        </div>
+                    </td>
+
+
+                </tr>
+                
+
+            </ng-container>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span style="font-weight: bold;">Net Amount</span></td>
+                <td>
+                    <span  style="font-weight: bold;">{{netAmount | currency:"₹"}}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,113 @@
+<div style="padding: 2px 0px;" id="doc">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Rate</th>
+                <th>Quantity</th>
+
+
+                <th scope="col">Date Created</th>
+
+                <th scope="col">Customer Group</th>
+                <th scope="col">Add/remove</th>
+                <th>Net Amount</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let billentry of billingEntries ;let i=index">
+                <tr>
+                    <th scope="row">{{i+1}}</th>
+                    <td>
+                        <div class="form-row">
+                            <div class="form-group ">
+                                <input [(ngModel)]="billentry.customerName" type="text" class="form-control"
+                                    id="inputEmail4" placeholder="Enter Name here">
+                            </div>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+
+                            <select class="dropdownCustom"
+                                style="width: 145px;padding: 6px;border: 1px solid #070727;border-radius: 4px"
+                                (change)="settingArea(i,$event.target.value)" name="area" id="area">
+                                <option *ngFor="let product of products" value="{{product.productId}}">{{product.productName}}</option>
+                            </select>
+                        </div>
+                    </td>
+                    <!-- <td>
+                        <div class="form-row">
+                            <div class="form-group ">
+                                <input [(ngModel)]="billentry.productName" type="text" class="form-control"
+                                    id="inputEmail4" placeholder="Enter Product Name here">
+                            </div>
+
+                        </div>
+                    </td> -->
+                    <td>
+                        <div class="form-group ">
+                            <input [(ngModel)]="billentry.amount" type="text"
+                                class="form-control" id="inputPassword4">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group ">
+                            <input (blur)="calculateTotal()" [(ngModel)]="billentry.quantity" type="text"
+                                class="form-control" id="inputPassword5">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input (change)="calculateTotal()" disabled [(ngModel)]="billentry.createdDate" type="date"
+                                class="form-control" id="inputPassword6">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+
+                            <select class="dropdownCustom"
+                                style="width: 145px;padding: 6px;border: 1px solid #070727;border-radius: 4px"
+                                (change)="settingArea(area,i,$event.target.value)" name="area" id="area">
+                                <option *ngFor="let area of areas" value="{{area.areaName}}">{{area.areaName}}</option>
+
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <button style="margin-right: 20px;" class="btn btn-success"
+                            (click)="addnewEntry(i)">Add</button>
+                        <button class="btn btn-success" (click)="removeEntry(i)">Remove</button>
+                    </td>
+
+                </tr>
+
+            </ng-container>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <!-- <button class="btn btn-success" (click)="exportPdf()">Print</button></td> -->
+                <td>
+                    <span>{{netAmount}}.Rs</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div style=";margin: 0 auto;" class="container">
+
+    <button style="margin-right: 20px;" (click)="save()" type="button" class="btn btn-success">Save</button>
+    <button (click)="reset()" type="button" class="btn btn-success">Reset</button>
+</div>

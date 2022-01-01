@@ -1,0 +1,14 @@
+<div class="container center">
+    <form >
+        <div class="form-group">
+            <label style="margin: 10px 0px;" for="exampleInputPassword1">Area Name</label>
+            <input name="areaName" [(ngModel)]="model.areaName" style="margin: 10px 0px;width: 50%;" type="text" class="form-control"
+                id="exampleInputPassword1" placeholder="Enter Area Name">
+        </div>
+
+
+
+        <button type="button" style="display: inline-block;margin: 0 auto;" (click)="save()"
+            class="btn btn-success">Save</button>
+    </form>
+</div>
